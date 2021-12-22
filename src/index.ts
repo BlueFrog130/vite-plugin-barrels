@@ -77,8 +77,6 @@ export default (options: Options): Plugin => {
 			await barrel(dir);
 		},
 		async handleHotUpdate({ file }) {
-			console.log("handleHotUpdate", file);
-
 			if (extensions.some((e) => file.endsWith(e))) {
 				await barrel(dir);
 			}
