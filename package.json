@@ -1,7 +1,7 @@
 {
 	"name": "vite-plugin-barrels",
 	"version": "1.0.0",
-	"description": "",
+	"description": "Create barrels automatically via Vite!",
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
 	"types": "dist/index.d.ts",
@@ -20,6 +20,10 @@
 		"barrel"
 	],
 	"author": "gradydevelopment <adam.grady@live.com>",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/BlueFrog130/vite-plugin-barrels"
+	},
 	"license": "MIT",
 	"devDependencies": {
 		"@rollup/plugin-typescript": "^8.3.0",
