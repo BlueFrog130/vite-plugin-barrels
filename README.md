@@ -108,7 +108,7 @@ interface Options {
     /**
      * File extension to search for
      */
-    extension: string | string[];
+    extension: string | string[] | RegExp;
 
     /**
      * Weather or not to use typescript
