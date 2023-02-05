@@ -12,7 +12,7 @@ interface Options {
 	/**
 	 * File extension to search for
 	 */
-	extension: string | string[];
+	extension: string | string[] | RegExp;
 
 	/**
 	 * Weather or not to use typescript
@@ -49,7 +49,13 @@ export default (options: Options): Plugin => {
 		const files = entries.filter((e) => e.isFile()).map((e) => e.name);
 		const components = files.filter(
 			(f) =>
-				extensions.some((ext) => f.endsWith(ext)) &&
+				extensions.some((ext) => {
+					if (typeof ext === 'string') {
+						return f.endsWith(ext)
+					}
+
+					return ext.test(f)
+				}) &&
 				basename(f) !== "index.js" &&
 				basename(f) !== "index.ts"
 		);
@@ -77,8 +83,16 @@ export default (options: Options): Plugin => {
 			await barrel(dir);
 		},
 		async handleHotUpdate({ file }) {
-			if (extensions.some((e) => file.endsWith(e))) {
-				await barrel(dir);
+			if (
+				extensions.some((e) => {
+					if (typeof e === 'string') {
+						return file.endsWith(e)
+					}
+
+					return e.test(file)
+				})
+			) {
+				await barrel(dir)
 			}
 		},
 	};
