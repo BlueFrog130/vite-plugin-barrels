@@ -1,6 +1,6 @@
 {
 	"name": "vite-plugin-barrels",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"description": "Create barrels automatically via Vite!",
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
